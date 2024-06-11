@@ -150,3 +150,14 @@ If you do not have access to the router, you will need to configure each device 
 
 <img width="743" alt="image" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/3a3c48a1-3bd6-430e-8d7b-2ba2fff3dbfb">
 
+Routes added:
+
+```
+--Added the following routes on one of the machine located in 192.168.x.x network
+sudo ip route add 10.0.0.0/16 via 192.168.1.104 dev ens18
+--Added the following routes on one of the machine located in 10.x.x.x network
+sudo ip route add 192.168.0.0/16 via 10.0.0.235 dev eth0
+```
+Explanation:
+- warp connectors: Installed on 192.168.1.104 and 10.0.0.235 machines.
+
