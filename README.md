@@ -133,10 +133,18 @@ This guide will walk you through the steps to install and configure OPNsense on 
 
 After successfully setting up OPNsense, the next step is to create a Warp Connector to connect two private networks using Cloudflare Warp. Follow the steps below to configure the Warp Connector.
 
+<img width="1079" alt="image" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/e0be807d-ce97-4403-a686-ec0906d12886">
+
+
 ### Steps to Create a Warp Connector
 
 1. **Prepare the Environment:**
     - Ensure you have two private networks you want to connect. In this setup, one network is managed by the OPNsense VM (192.168.x.x), and the other is the WAN network provided by Xfinity (10.x.x.x).
 2. **Configure Warp Connector:**
     - Follow the detailed instructions provided by Cloudflare to set up the Warp Connector. The documentation can be found here: [Cloudflare Warp Connector Documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/).
+
+I have used the following option in my home lab setup:
+https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#option-3-intermediate-gateway
+
+<img width="743" alt="image" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/3a3c48a1-3bd6-430e-8d7b-2ba2fff3dbfb">
 
