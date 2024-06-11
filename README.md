@@ -257,3 +257,89 @@ network:
         ```
         
     - This output indicates that the machine knows to route traffic to the 10.x.x.x network via the 192.168.1.104 gateway on the `ens18` interface.
+
+## Testing and Troubleshooting Network Connectivity
+
+After setting up and verifying the routes, you should test the connectivity between the machines on the 10.x.x.x network and the 192.168.x.x network. If connectivity issues arise, use `ping`, `traceroute`, or `mtr` to diagnose and troubleshoot the problem.
+
+### Steps for Testing Connectivity
+
+1. **Test Connectivity with Ping:**
+    - Open a terminal on a machine in the 10.x.x.x network.
+    - Ping a machine in the 192.168.x.x network to test connectivity. For example:
+        
+        ```
+        ping 192.168.1.101
+        ```
+        
+    - Expected output if successful:
+        
+        ```python
+        PING 192.168.1.101 (192.168.1.101) 56(84) bytes of data.
+        64 bytes from 192.168.1.101: icmp_seq=2 ttl=60 time=44.4 ms
+        64 bytes from 192.168.1.101: icmp_seq=3 ttl=60 time=34.8 ms
+        64 bytes from 192.168.1.101: icmp_seq=4 ttl=60 time=33.1 ms
+        64 bytes from 192.168.1.101: icmp_seq=5 ttl=60 time=28.2 ms
+        
+        ```
+        
+
+### Troubleshooting Steps
+
+If the ping test fails, follow these steps to diagnose and troubleshoot the issue:
+
+1. **Check Routes with Traceroute or Mtr:**
+    - Use `traceroute` or `mtr` to identify where the packets are being dropped.
+
+### Using Traceroute:
+
+```
+traceroute 192.168.1.101
+
+```
+
+### Using Mtr:
+
+```
+mtr 192.168.1.101
+
+```
+
+- Look for where the packets stop to identify the point of failure.
+1. **Verify Packet Forwarding:**
+    - Ensure packet forwarding is enabled on the machines acting as gateways.
+
+### Check Packet Forwarding on Linux:
+
+```
+sudo sysctl net.ipv4.ip_forward
+
+```
+
+- If the output is `0`, enable it:
+    
+    ```
+    sudo sysctl -w net.ipv4.ip_forward=1
+    
+    ```
+    
+1. **Check Static Routes:**
+    - Verify that the static routes have been correctly added.
+
+### On the 10.x.x.x Network Machine:
+
+```
+ip route get 192.168.x.x
+
+```
+
+- Ensure there is a route to the 192.168.x.x network via the correct gateway.
+
+### On the 192.168.x.x Network Machine:
+
+```
+ip route get 10.x.x.x
+
+```
+
+- Ensure there is a route to the 10.x.x.x network via the correct gateway.
