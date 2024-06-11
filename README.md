@@ -180,3 +180,44 @@ sudo ip route add 192.168.0.0/16 via 10.0.0.235 dev eth0
 - **via 10.0.0.235**: Specifies the next-hop IP address through which packets should be routed. This is the IP address of the machine with the Warp Connector installed in the 10.x.x.x network.
 - **dev eth0**: Specifies the network interface to use for the route. Replace `eth0` with the appropriate interface name for your machine.
 
+### Steps to Make Routes Persistent
+
+1. **Open the Netplan Configuration File:**
+    - Edit the `/etc/netplan/cloud-init.yml` configuration file.
+2. **Add the Network Configuration:**
+    - Add the static routes to the configuration file under the appropriate network interface.
+
+### Example Configuration for `/etc/netplan/cloud-init.yml`
+
+### For a Machine in the 192.168.x.x Network
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    ens18:
+      dhcp4: true
+      routes:
+        - to: 10.0.0.0/16
+          via: 192.168.1.104
+          on-link: true
+
+```
+
+### For a Machine in the 10.x.x.x Network
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: true
+      routes:
+        - to: 192.168.0.0/16
+          via: 10.0.0.235
+          on-link: true
+
+```
+
+1. **Apply the Changes:**
+    - After editing the file, apply the changes by using the `netplan apply` command.
