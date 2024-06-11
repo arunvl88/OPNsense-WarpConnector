@@ -144,7 +144,9 @@ After successfully setting up OPNsense, the next step is to create a Warp Connec
     - Follow the detailed instructions provided by Cloudflare to set up the Warp Connector. The documentation can be found here: [Cloudflare Warp Connector Documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/).
 
 I have used the following option in my home lab setup:
-https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#option-3-intermediate-gateway
+[option-3-intermediate-gateway](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#option-3-intermediate-gateway)
+
+If you do not have access to the router, you will need to configure each device on the subnet to egress through the WARP Connector machine instead of the default gateway.
 
 <img width="743" alt="image" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/3a3c48a1-3bd6-430e-8d7b-2ba2fff3dbfb">
 
