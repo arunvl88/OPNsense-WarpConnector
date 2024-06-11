@@ -129,7 +129,14 @@ This guide will walk you through the steps to install and configure OPNsense on 
 
 <img width="715" alt="Untitled (1)" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/96d15c7c-8d19-4e98-a1f9-81dfc9a66563">
 
+## Creating a Warp Connector
 
-### Conclusion
+After successfully setting up OPNsense, the next step is to create a Warp Connector to connect two private networks using Cloudflare Warp. Follow the steps below to configure the Warp Connector.
 
-You have successfully installed and configured OPNsense on your Proxmox server. Your OPNsense VM is now ready to manage your network traffic and provide firewall and routing capabilities.
+### Steps to Create a Warp Connector
+
+1. **Prepare the Environment:**
+    - Ensure you have two private networks you want to connect. In this setup, one network is managed by the OPNsense VM (192.168.x.x), and the other is the WAN network provided by Xfinity (10.x.x.x).
+2. **Configure Warp Connector:**
+    - Follow the detailed instructions provided by Cloudflare to set up the Warp Connector. The documentation can be found here: [Cloudflare Warp Connector Documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/).
+
