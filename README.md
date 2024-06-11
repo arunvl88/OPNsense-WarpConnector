@@ -221,3 +221,39 @@ network:
 
 1. **Apply the Changes:**
     - After editing the file, apply the changes by using the `netplan apply` command.
+  
+### Steps for Verifying the Routes
+
+1. **Verify Routes on the 10.x.x.x Network Machine**
+    - Open a terminal on a machine in the 10.x.x.x network.
+    - Use the `ip route get` command to verify the route to a machine in the 192.168.x.x network. For example:
+        
+        ```
+        ip route get 192.168.1.10
+        ```
+        
+    - Expected output:
+        
+        ```css
+        192.168.1.101 via 10.0.0.235 dev eth0 src 10.0.0.8 uid 1000
+            cache
+        
+        ```
+        
+    - This output indicates that the machine knows to route traffic to the 192.168.x.x network via the 10.0.0.235 gateway on the `eth0` interface.
+2. **Verify Routes on the 192.168.x.x Network Machine**
+    - Open a terminal on a machine in the 192.168.x.x network.
+    - Use the `ip route get` command to verify the route to a machine in the 10.x.x.x network. For example:
+        
+        ```
+        ip route get 10.0.0.8
+        ```
+        
+    - Expected output:
+        
+        ```css
+        10.0.0.8 via 192.168.1.104 dev ens18 src 192.168.1.101 uid 1000
+            cache
+        ```
+        
+    - This output indicates that the machine knows to route traffic to the 10.x.x.x network via the 192.168.1.104 gateway on the `ens18` interface.
