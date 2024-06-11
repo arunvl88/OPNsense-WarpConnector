@@ -127,6 +127,8 @@ This guide will walk you through the steps to install and configure OPNsense on 
     - Open a web browser and navigate to the LAN IP address (default is 192.168.1.1).
     - You can perform any necessary configuration if required.
 
+<img width="715" alt="Untitled (1)" src="https://github.com/arunvl88/OPNsense-WarpConnector/assets/7003647/96d15c7c-8d19-4e98-a1f9-81dfc9a66563">
+
 
 ### Conclusion
 
